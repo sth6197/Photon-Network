@@ -8,6 +8,17 @@ public class Rotation : MonoBehaviour
     [SerializeField] float mouseX;
     [SerializeField] float mouseY;
 
+    public void OnKeyUpdate()
+    {
+        // mouseX에 마우스로 입력한 값을 저장합니다.
+        mouseX += Input.GetAxisRaw("Mouse X") * speed * Time.deltaTime;
+    }
+
+    public void RotateY(Rigidbody rigidBody)
+    {
+        rigidBody.transform.eulerAngles = new Vector3 (0, mouseX, 0);
+    }
+
     public void RotateX()
     {
         // mouseY에 마우스로 입력한 값을 저장합니다. "Mouse Y"

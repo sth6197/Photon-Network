@@ -14,7 +14,7 @@ public class Head : MonoBehaviour
 
     void Update()
     {
-        rotation.RotateX();   
+        rotation.RotateX();
     }
 
 }
