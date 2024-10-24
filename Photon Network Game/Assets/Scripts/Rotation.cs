@@ -28,7 +28,7 @@ public class Rotation : MonoBehaviour
         // mouseY <- Mathf.Clamp(제한하려는 값, 최소값, 최대값)
         mouseY = Mathf.Clamp(mouseY, -65, 65);
 
-        // transform.EulerAngles
-        transform.eulerAngles = new Vector3(-mouseY, 0, 0);
+        // transform.localEulerAngles
+        transform.localEulerAngles = new Vector3(-mouseY, 0, 0);
     }
 }

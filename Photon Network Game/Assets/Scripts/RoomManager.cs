@@ -12,7 +12,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
     [SerializeField] InputField roomNameInputField;
     [SerializeField] InputField roomCapacityInputField;
 
-    Dictionary <string, RoomInfo> dictionary = new Dictionary<string, RoomInfo>();
+    Dictionary <string, GameObject> dictionary = new Dictionary<string, GameObject>();
 
     public override void OnJoinedRoom()
     {
@@ -34,7 +34,47 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
-        InstantiateRoom();
+        GameObject roomPrefab;
+
+        foreach (RoomInfo room in roomList)
+        {
+            // 룸이 삭제된 경우
+            if(room.RemovedFromList == true)
+            {
+                dictionary.TryGetValue(room.Name, out roomPrefab);
+
+                Destroy(roomPrefab);
+
+                dictionary.Remove(room.Name);
+            }
+            else // 룸의 정보가 변경된 경우
+            {
+                if(dictionary.ContainsKey(room.Name) == false) // 룸이 처음 생성된 경우
+                {
+                    GameObject roomObject = InstantiateRoom();
+
+                    roomObject.GetComponent<Information>().SetData
+                    (
+                        room.Name,
+                        room.PlayerCount,
+                        room.MaxPlayers
+                    );
+
+                    dictionary.Add(room.Name, roomObject);
+                }
+                else // 룸의 정보가 변경된 경우
+                {
+                    dictionary.TryGetValue(room.Name, out roomPrefab);
+
+                    roomPrefab.GetComponent<Information>().SetData
+                   (
+                        room.Name,
+                        room.PlayerCount,
+                        room.MaxPlayers
+                    );
+                }
+            }
+        }
     }
 
     public GameObject InstantiateRoom()

@@ -30,6 +30,11 @@ public class Character : MonoBehaviourPun
 
     private void FixedUpdate()
     {
+        if(photonView.IsMine == false)
+        {
+            return;
+        }
+
         move.OnMove(rigidBody);
         rotation.RotateY(rigidBody);
     }

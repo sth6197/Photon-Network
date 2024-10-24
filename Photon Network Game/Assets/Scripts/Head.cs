@@ -1,9 +1,10 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rotation))]
-public class Head : MonoBehaviour
+public class Head : MonoBehaviourPunCallbacks
 {
     [SerializeField] Rotation rotation;
 
@@ -14,7 +15,11 @@ public class Head : MonoBehaviour
 
     void Update()
     {
+        if(photonView.IsMine == false)
+        {
+            return;
+        }
+
         rotation.RotateX();
     }
-
 }

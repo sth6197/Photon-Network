@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-    [SerializeField] float speed = 5f;
+    [SerializeField] float speed;
     [SerializeField] Vector3 direction;
 
     public void OnKeyUpdate()
     {
-        // direction.x¿¡ ´ëÇÑ °ªÀ» ¹Ş½À´Ï´Ù.
+        // direction.xì— ëŒ€í•œ ê°’ì„ ë°›ìŠµë‹ˆë‹¤.
         direction.x = Input.GetAxisRaw("Horizontal");
 
-        // direction.z¿¡ ´ëÇÑ °ªÀ» ¹Ş½À´Ï´Ù.
+        // direction.zì— ëŒ€í•œ ê°’ì„ ë°›ìŠµë‹ˆë‹¤.
         direction.z = Input.GetAxisRaw("Vertical");
 
-        // direction ¹æÇâÀ» ´ÜÀ§ º¤ÅÍ·Î ¼³Á¤ÇÕ´Ï´Ù.
+        // direction ë°©í–¥ì„ ë‹¨ìœ„ ë²¡í„°ë¡œ ì„¤ì •í•©ë‹ˆë‹¤.
         direction.Normalize();
     }
 
-    public void OnMove(Rigidbody rigidbody)
+    public void OnMove(Rigidbody rigidBody)
     {
-        rigidbody.position += rigidbody.transform.TransformDirection(direction * speed * Time.deltaTime);
+        rigidBody.position += rigidBody.transform.TransformDirection(direction * speed * Time.deltaTime);
     }
 }
