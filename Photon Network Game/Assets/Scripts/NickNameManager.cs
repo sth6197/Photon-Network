@@ -15,7 +15,7 @@ public class NickNameManager : MonoBehaviourPunCallbacks
     void Start()
     {
         // 1. PhotonNetwork.NickName에 저장된 String 값을 불러옵니다.
-        string nickName = PlayerPrefs.GetString("NickName");
+        PhotonNetwork.NickName = PlayerPrefs.GetString("NickName");
 
         // 2. PhotonNetwork.NickName이 비어 있다면 nickNamePanel을 활성화합니다.
         if (PhotonNetwork.NickName.IsNullOrEmpty())
@@ -32,7 +32,7 @@ public class NickNameManager : MonoBehaviourPunCallbacks
         // 2. NickName을 저장합니다.
         PlayerPrefs.SetString("NickName", PhotonNetwork.NickName);
 
-        // 3. 게임 오브젝트를 비활성화합니다.
+        // 3. nickNamePanel 오브젝트를 비활성화합니다.
         nickNamePanel.SetActive(false);
     }
 }

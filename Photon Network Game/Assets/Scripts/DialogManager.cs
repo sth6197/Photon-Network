@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 public class DialogManager : MonoBehaviourPunCallbacks
 {
     [SerializeField] InputField inputField;
+    [SerializeField] ScrollRect scrollRect;
     [SerializeField] Transform parentTransform;
     
     void Update()
@@ -19,11 +20,14 @@ public class DialogManager : MonoBehaviourPunCallbacks
             // inputField에 있는 텍스트를 가져옵니다.
             // (string 변수) <= Photon 닉네임 + : + InputField로 설정한 문자열
 
-            string talk = photonView.Owner.NickName + " : " + inputField.text;
+            string talk = PhotonNetwork.LocalPlayer.NickName + " : " + inputField.text;
 
             // RPC Target.All : 현재 룸에 있는 모든 클라이언트에게 Talk() 함수를 실행하라는 명령을 전달합니다.
 
             photonView.RPC("Talk", RpcTarget.All, talk);
+
+            // 스크롤의 위치를 초기화합니다.
+            scrollRect.verticalNormalizedPosition = 0.0f;
         }
     }
 
@@ -41,8 +45,11 @@ public class DialogManager : MonoBehaviourPunCallbacks
         talk.transform.SetParent(parentTransform);
 
         // 채팅을 입력한 후에도 이어서 입력할 수 있도록 설정합니다.
-        inputField.ActivateInputField()
-;
+        inputField.ActivateInputField();
+
+        // 스크롤의 위치를 초기화합니다.
+        scrollRect.verticalNormalizedPosition = 0.0f;
+
         // inputField의 텍스트를 초기화합니다.
         inputField.text = "";
     }
