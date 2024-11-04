@@ -1,9 +1,10 @@
 using UnityEngine;
 using Photon.Pun;
+using ExitGames.Client.Photon;
 
 [RequireComponent(typeof(Move))]
 [RequireComponent(typeof(Rotation))]
-public class Character : MonoBehaviourPun
+public class Character : MonoBehaviourPunCallbacks
 {
     [SerializeField] Move move;
     [SerializeField] Rotation rotation;
