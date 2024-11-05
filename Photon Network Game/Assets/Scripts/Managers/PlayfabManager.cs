@@ -27,7 +27,7 @@ public class PlayfabManager : MonoBehaviourPunCallbacks
 
     public void Failure(PlayFabError playFabError)
     {
-        Debug.Log(playFabError.GenerateErrorReport());
+        PopUpManager.Instance.Show(PopUpType.SIGNUPFAILURE, playFabError.GenerateErrorReport());
     }
 
     public void OnSignIn()
