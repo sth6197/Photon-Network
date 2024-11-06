@@ -5,7 +5,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
 
-public class GamaManager : MonoBehaviourPunCallbacks
+public class GameManager : MonoBehaviourPunCallbacks
 {
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {

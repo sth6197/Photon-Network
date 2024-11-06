@@ -18,16 +18,9 @@ public class PlayfabManager : MonoBehaviourPunCallbacks
         PhotonNetwork.LoadLevel("Lobby Scene");
     }
 
-    public void Success(RegisterPlayFabUserResult registerPlayFabUserResult)
-    {
-        Debug.Log(registerPlayFabUserResult.Request);
-        Debug.Log(registerPlayFabUserResult.ToString());
-    }
-
-
     public void Failure(PlayFabError playFabError)
     {
-        PopUpManager.Instance.Show(PopUpType.SIGNUPFAILURE, playFabError.GenerateErrorReport());
+        PopUpManager.Instance.Show(PopUpType.TEXT, playFabError.GenerateErrorReport());
     }
 
     public void OnSignIn()
@@ -48,18 +41,6 @@ public class PlayfabManager : MonoBehaviourPunCallbacks
 
     public void OnSignUp()
     {
-        var request = new RegisterPlayFabUserRequest
-        {
-            Email = emailInputField.text,
-            Password = passwordInputField.text,
-            RequireBothUsernameAndEmail = false
-        };
-
-        PlayFabClientAPI.RegisterPlayFabUser
-        (
-            request,
-            Success,
-            Failure
-        );
+        PopUpManager.Instance.Show(PopUpType.SIGNUP, "Kim");
     }
 }

@@ -10,15 +10,12 @@ public class NickName : MonoBehaviourPunCallbacks
     
     void Start()
     {
+        remoteCamera = Camera.main;
         nickNameText.text = photonView.Owner.NickName;
     }
 
     private void Update()
     {
-        transform.LookAt(remoteCamera.transform.localPosition);
-
-        Vector3 euler = transform.localEulerAngles;
-
-        transform.localRotation = Quaternion.Euler(0, euler.y, 0);
-    }
+        transform.forward = remoteCamera.transform.forward;
+    }   
 }
