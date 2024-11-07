@@ -976,8 +976,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 113610035154528828}
   m_TextComponent: {fileID: 4583061442065799749}
   m_Placeholder: {fileID: 5566734303764312998}
-  m_ContentType: 0
-  m_InputType: 0
+  m_ContentType: 7
+  m_InputType: 2
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
@@ -1122,9 +1122,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2182538052994586550}
-        m_TargetAssemblyTypeName: PopUp, Assembly-CSharp
-        m_MethodName: OnClose
+      - m_Target: {fileID: 8768023337686163088}
+        m_TargetAssemblyTypeName: SignUp, Assembly-CSharp
+        m_MethodName: OnConfirm
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1145,7 +1145,7 @@ GameObject:
   - component: {fileID: 1879628247568011396}
   - component: {fileID: 3414350431036832759}
   - component: {fileID: 3474657104545452105}
-  - component: {fileID: 2182538052994586550}
+  - component: {fileID: 8768023337686163088}
   m_Layer: 0
   m_Name: SIGNUP
   m_TagString: Untagged
@@ -1212,7 +1212,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2182538052994586550
+--- !u!114 &8768023337686163088
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1221,10 +1221,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6883977408065526815}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43a67b194dca2ca4fa9e0a7609539be1, type: 3}
+  m_Script: {fileID: 11500000, guid: f1094156515fe5a45811228d84c9fa36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 0}
+  emailInputField: {fileID: 1432321203689282770}
+  passwordInputField: {fileID: 4150140792166901936}
+  nickNameInputField: {fileID: 1228788082368005815}
 --- !u!1 &8756209062887458566
 GameObject:
   m_ObjectHideFlags: 0

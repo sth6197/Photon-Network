@@ -4,6 +4,7 @@ using UnityEngine;
 using PlayFab;
 using PlayFab.ClientModels;
 using UnityEngine.UI;
+using Photon.Pun;
 
 public class SignUp : PopUp
 {
@@ -36,6 +37,16 @@ public class SignUp : PopUp
             Success,
             Failure
         );
+
+        // 1. PhotonNetwork.NickName에 nickNameinputField로 입력한 값을 넣어줍니다.
+        PhotonNetwork.NickName = nickNameInputField.text;
+
+        // 2. NickName을 저장합니다.
+        PlayerPrefs.SetString("NickName", PhotonNetwork.NickName);
+
+        emailInputField.text = "";
+        passwordInputField.text = "";
+        nickNameInputField.text = "";
 
         gameObject.SetActive(false);
     }

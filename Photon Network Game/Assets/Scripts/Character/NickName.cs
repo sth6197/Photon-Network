@@ -7,7 +7,12 @@ public class NickName : MonoBehaviourPunCallbacks
 {
     [SerializeField] Text nickNameText;
     [SerializeField] Camera remoteCamera;
-    
+
+    private void Awake()
+    {
+        PhotonNetwork.NickName = PlayerPrefs.GetString("NickName");
+    }
+
     void Start()
     {
         remoteCamera = Camera.main;
